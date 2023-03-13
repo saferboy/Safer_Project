@@ -7,7 +7,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
     try {
         
         const id = +req.params.id
-        const title = req.body
+        const title = req.body.title
 
         if(!req.file) {
             return res.status(400).json({

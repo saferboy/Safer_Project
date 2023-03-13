@@ -1,12 +1,10 @@
 import { PrismaClient } from "@prisma/client";
-import { CtgDto } from "@model/categoryDto";
-
 
 
 const prisma = new PrismaClient({
-    log: [
-        { emit: 'stdout', level: 'query' }
-    ]
+    // log: [
+    //     { emit: 'stdout', level: 'query' }
+    // ]
 })
 
 

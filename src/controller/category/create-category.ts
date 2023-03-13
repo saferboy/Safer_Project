@@ -7,13 +7,13 @@ export default async (req: Request, res: Response, next: NextFunction) => {
         
         const title = req.body.title
 
-        const categeory = await getCategoryByName(title)
+        // const categeory = await getCategoryByName(title)
 
-        if(categeory) {
-            return res.status(404).json({
-                message: "Category alredry created"
-            })
-        }
+        // if(!categeory) {
+        //     return res.status(404).json({
+        //         message: "Category alredry created"
+        //     })
+        // }
 
 
         if (!req.file) {
