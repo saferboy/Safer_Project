@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Categeory {
+model Category {
   id      Int @id @default(autoincrement())
   title   String
   icon    String

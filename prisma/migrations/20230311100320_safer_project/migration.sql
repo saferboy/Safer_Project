@@ -1,8 +1,8 @@
 -- CreateTable
-CREATE TABLE "Categeory" (
+CREATE TABLE "Category" (
     "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
     "icon" TEXT NOT NULL,
 
-    CONSTRAINT "Categeory_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Category_pkey" PRIMARY KEY ("id")
 );

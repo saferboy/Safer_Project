@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { CreateDto } from "@model/categoryDto";
+import { CtgDto } from "@model/categoryDto";
 
 
 
@@ -12,27 +12,27 @@ const prisma = new PrismaClient({
 
 
 //      post '/category' => create category
-export const createCategory = async (category: CreateDto) => {
-    return prisma.categeory.create({
+export const createCategory = async (title: string, icon: string) => {
+    return prisma.category.create({
         data: {
-            title:   category.title,
-            icon:    category.icon
+            title:   title,
+            icon:    icon
         }
     })
 };
 
 
 
-//      get '/' => get all category
+//      get '/category' => get all category
 export const getAllCategory = async () => {
-    return prisma.categeory.findMany()
+    return prisma.category.findMany()
 };
 
 
 
 //      get '/category/:id' =>  get category by id
 export const gatCategoryById = async(id: number) => {
-    return prisma.categeory.findUnique({
+    return prisma.category.findUnique({
         where: {
             id:     id
         }
@@ -41,3 +41,37 @@ export const gatCategoryById = async(id: number) => {
 
 
 
+//      get category by name
+export const getCategoryByName = async (name: string) => {
+    return prisma.category.findMany({
+        where: {
+            title: name
+        }
+    })
+}
+
+
+
+//      put'/category/:id'   =>  update category by id
+export const updateCategoryById = async (id: number,title: string, icon: string ) => {
+    return prisma.category.update({
+        data: {
+            title:  title,
+            icon:   icon
+        },
+        where: {
+            id:     id
+        }
+    })
+};
+
+
+
+//      delete'/category/:id'    =>  delete category by id
+export const deleteCayegoryById = async (id: number) => {
+    return prisma.category.delete({
+        where: {
+            id:     id
+        }
+    })
+}
