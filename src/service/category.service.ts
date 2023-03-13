@@ -8,7 +8,6 @@ const prisma = new PrismaClient({
 })
 
 
-
 //      post '/category' => create category
 export const createCategory = async (title: string, icon: string) => {
     return prisma.category.create({

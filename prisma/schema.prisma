@@ -11,17 +11,17 @@ datasource db {
 }
 
 model Category {
-  id      Int @id @default(autoincrement())
-  title   String
-  icon    String
+  id    Int    @id @default(autoincrement())
+  title String
+  icon  String
 }
 
-// model Game {
-//   id                  Int @id @default(autoincrement())
-//   title               String
-//   released            String
-//   genre               String
-//   interface_language  String
-//   voice_language      String
-//   image               String
-// }
+model Part {
+  id                 Int    @id @default(autoincrement())
+  title              String
+  released           String
+  genre              String
+  interface_language String
+  voice_language     String
+  image              String
+}
