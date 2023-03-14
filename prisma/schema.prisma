@@ -17,11 +17,30 @@ model Category {
 }
 
 model Part {
-  id                 Int    @id @default(autoincrement())
+  id                 Int    @unique @default(autoincrement())
   title              String
   released           String
   genre              String
   interface_language String
   voice_language     String
   image              String
+  System             System @relation(fields: [systemId], references: [id])
+  Status             Status
+  systemId           Int
+}
+
+model System {
+  id         Int    @id @default(autoincrement())
+  oc         String
+  cpu        String
+  ram        String
+  video_card String
+  size       String
+  Part       Part[]
+}
+
+enum Status {
+  Active
+  Inprogress
+  Finished
 }
