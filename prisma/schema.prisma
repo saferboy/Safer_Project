@@ -24,8 +24,9 @@ model Part {
   interface_language String
   voice_language     String
   image              String
+  status             Status @default(Active)
+
   System             System @relation(fields: [systemId], references: [id])
-  Status             Status
   systemId           Int
 }
 

@@ -4,7 +4,7 @@ import { upload } from "../../middleware/upload";
 
 
 import createCategory from "@controller/category/create-category"
-import allCategory from "@controller/category/getAllCAtegory"
+import allCategory from "@controller/category/getAllCategory"
 import findCategoryById from "@controller/category/getCategoryById"
 import updateCategory from "@controller/category/updateCategory";
 import deleteCategory from "@controller/category/deleteCategory";
