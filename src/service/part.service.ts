@@ -1,13 +1,13 @@
 import { PartDto, PartSystem } from "@model/partDto";
 import { PrismaClient } from "@prisma/client";
-import { idParams } from "joi.schema";
+import { idParams } from "../joi.schema"
 
 
 const prisma = new PrismaClient()
 
 
 //      post '/part' => create part
-export const createPart = async (part: PartDto, systemId: number, image: string) => {
+export const createPart = async (part: PartDto, systemDto: PartSystem, image: string) => {
     return prisma.part.create({
         data: {
             title: part.title,
@@ -17,9 +17,13 @@ export const createPart = async (part: PartDto, systemId: number, image: string)
             voice_language: part.voice_language,
             image: image,
             Status: "Active",
-            System: {
-                connect: {
-                    id: systemId
+            System:  {
+                create:  {
+                    oc:     systemDto.oc,
+                    cpu:    systemDto.cpu,
+                    ram:    systemDto.ram,
+                    video_card: systemDto.video_card,
+                    size:   systemDto.size
                 }
             }
         },
@@ -28,19 +32,6 @@ export const createPart = async (part: PartDto, systemId: number, image: string)
         }
     })
 };
-
-
-export const createSystem = async (system: PartSystem) => {
-    return prisma.system.create({
-        data: {
-            oc: system.oc,
-            cpu: system.cpu,
-            ram: system.ram,
-            video_card: system.video_card,
-            size: system.size
-        }
-    })
-}
 
 
 

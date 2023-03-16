@@ -14,6 +14,13 @@ export interface PartBody {
     genre:              string,
     interface_language: string,
     voice_language:     string,
+    system: {
+        oc:     string,
+        cpu:    string,
+        ram:    string,
+        video_card: string,
+        size:   string
+    }
 }
 
 
