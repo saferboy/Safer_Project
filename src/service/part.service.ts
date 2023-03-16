@@ -1,6 +1,5 @@
 import { PartDto, PartSystem } from "@model/partDto";
 import { PrismaClient } from "@prisma/client";
-import { idParams } from "../joi.schema"
 
 
 const prisma = new PrismaClient()

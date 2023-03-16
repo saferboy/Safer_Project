@@ -9,6 +9,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-joi-validation": "^5.0.1",
     "joi": "^17.8.3",
     "module-alias": "^2.2.2",
     "multer": "^1.4.5-lts.1",
@@ -32,14 +33,12 @@
   "author": "",
   "license": "ISC",
   "description": "",
-  
   "_moduleAliases": {
     "@configs": "lib/configs",
-    "@controllers": "lib/controllers",
-    "@middlewares": "lib/middlewares",
-    "@models": "lib/models",
-    "@routes": "lib/routes",
-    "@schemas": "lib/schemas",
-    "@services": "lib/services"
+    "@controller": "lib/controller",
+    "@middleware": "lib/middleware",
+    "@model": "lib/model",
+    "@api": "lib/api",
+    "@service": "lib/services"
   }
 }

@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { createPart} from "@service/part.service";
 import { PartDto } from "@model/partDto";
-// import { PartSystem } from "@model/partDto";
+import { PartSystem } from "@model/partDto";
 
 
 export default async (req: Request, res: Response, next: NextFunction) => {
@@ -9,7 +9,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
     try {
 
         const part:PartDto  = req.body
-        const partSystem = req.body
+        const partSystem: PartSystem = req.body
         
         if (!req.file) {
             return res.status(400).json({

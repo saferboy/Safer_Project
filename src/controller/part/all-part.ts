@@ -10,6 +10,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
 
         const mapped = options.map(option => {
             return {
+                id:         option.id,
                 title:   option.title,
                 released: option.released,
                 genre:      option.genre,
@@ -17,8 +18,8 @@ export default async (req: Request, res: Response, next: NextFunction) => {
                 voice_language:     option.voice_language,
                 image:      option.image,
                 status: option.Status,
-                system: {
-                    id: option.System.id,
+                system_requirenments: {
+                    // id: option.System.id,
                     oc: option.System.oc,
                     cpu:option.System.cpu,
                     ram: option.System.ram,
@@ -26,6 +27,11 @@ export default async (req: Request, res: Response, next: NextFunction) => {
                     size:   option.System.size
                 }
             }
+        })
+
+        return res.status(200).json({
+            message: "All parts",
+            parts: mapped
         })
 
     } catch (error) {
