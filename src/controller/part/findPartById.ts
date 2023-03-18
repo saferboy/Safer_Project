@@ -27,7 +27,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
             interface_language: option.interface_language,
             voice_language:     option.voice_language,
             image:              option.image,
-            status:             option.Status,
+            status:             option.status,
             system_requirenments: {
                 oc:     option.System.oc,
                 cpu:    option.System.cpu,

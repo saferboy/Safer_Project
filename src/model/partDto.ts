@@ -5,7 +5,8 @@ export interface PartDto {
     genre:              string,
     interface_language: string,
     voice_language:     string,
-    image:              string
+    image:              string,
+    status:             string
 }
 
 export interface PartBody {

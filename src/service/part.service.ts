@@ -15,14 +15,14 @@ export const createPart = async (part: PartDto, systemDto: PartSystem, image: st
             interface_language: part.interface_language,
             voice_language: part.voice_language,
             image: image,
-            Status: "Active",
-            System:  {
-                create:  {
-                    oc:     systemDto.oc,
-                    cpu:    systemDto.cpu,
-                    ram:    systemDto.ram,
+            // Status: "Active",
+            System: {
+                create: {
+                    oc: systemDto.oc,
+                    cpu: systemDto.cpu,
+                    ram: systemDto.ram,
                     video_card: systemDto.video_card,
-                    size:   systemDto.size
+                    size: systemDto.size
                 }
             }
         },
@@ -47,20 +47,28 @@ export const getAllPart = async () => {
 
 //      get '/part/:id'  =>  get part by id
 export const findtPartById = async (id: number) => {
-    return prisma.part.findUnique({
-        where: {
-            id: id
-        },
-        include: {
-            System: true
-        }
-    })
+    
+    try {
+    
+        return  prisma.part.findUnique({
+            where: {
+                id: id
+            },
+            include: {
+                System: true
+            }
+        })    
+    } catch (error) {
+        throw error
+    }
+    
 };
 
 
 
-//      put '/part/:id  =>  update part by id
-export const updatePartById = async (id: number, part: PartDto, systemId: number, image: string) => {
+    //  put '/part/:id  =>  update part by id
+export const updatePartById = async (id: number, part: PartDto & PartSystem, image: string) => {
+
     return prisma.part.update({
         data: {
             title:              part.title,
@@ -69,10 +77,17 @@ export const updatePartById = async (id: number, part: PartDto, systemId: number
             interface_language: part.interface_language,
             voice_language:     part.voice_language,
             image:              image,
-            Status: "Active",
+            // status:             part.status,
             System: {
                 connect: {
-                    id: systemId
+                    id
+                },
+                update: {
+                    oc: part.oc,
+                    cpu: part.cpu,
+                    ram: part.ram,
+                    video_card: part.video_card,
+                    size: part.size
                 }
             }
         },
@@ -84,6 +99,43 @@ export const updatePartById = async (id: number, part: PartDto, systemId: number
         }
     })
 };
+
+
+// export const updatePart = async (id: number, part: PartDto, image: string) => {
+
+//     return prisma.part.update({
+//         data: {
+//             title:  part.title,
+//             released:           part.released,
+//             genre:              part.genre,
+//             interface_language: part.interface_language,
+//             voice_language:     part.voice_language,
+//             image:              image
+//         },
+//         where: {
+//             id: id
+//         }
+//     })
+// }
+
+
+// export const updateSystem = async (id: number, system: PartSystem, ) => {
+
+//     return prisma.system.update({
+//         data: {
+//             oc:     system.oc,
+//             cpu:    system.cpu,
+//             ram:    system.ram,
+//             video_card: system.video_card,
+//             size:   system.size
+//         },
+//         where: {
+//             id: id
+//         }
+//     })
+        
+
+// }
 
 
 
