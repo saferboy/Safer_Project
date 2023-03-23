@@ -16,9 +16,10 @@ import { idParams, partBody } from "../../joi.schema";
 
 const router = Router()
 
-.post('/', validator.body(partBody),upload.single('file'), createPart)
-.get('/', allPart)
-.get('/:id', validator.params(idParams), findPArt)
-.put('/:id', validator.fields(partBody), upload.single('file') ,updatePart)
-.delete('/:id',     deletePart)
+.post('/',      upload.single('file'), validator.body(partBody),   createPart)
+.get('/',       allPart)
+.get('/:id',    validator.params(idParams), findPArt)
+.put('/:id',    upload.single('file'), validator.body(partBody), updatePart)
+.delete('/:id', deletePart)
+
 export default router

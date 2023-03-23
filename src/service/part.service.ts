@@ -1,7 +1,7 @@
 import { PartDto, PartSystem } from "@model/partDto";
 import { PrismaClient } from "@prisma/client";
 
-
+import * as fs from 'fs'
 const prisma = new PrismaClient()
 
 
@@ -141,7 +141,7 @@ export const updatePartById = async (id: number, part: PartDto & PartSystem, ima
 
 //      delete '/part/:id'  =>  delete part by id
 export const deletePartById = async (id: number) => {
-    return prisma.part.delete({
+    const result = await prisma.part.delete({
         where: {
             id: id
         },
@@ -149,4 +149,12 @@ export const deletePartById = async (id: number) => {
             System: true
         }
     })
+
+    console.log(result.image)
+
+   fs.rm(result.image, (error) => {
+    console.log('bla')
+   })
+
+   return result
 }

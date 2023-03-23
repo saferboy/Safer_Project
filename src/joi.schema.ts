@@ -26,4 +26,6 @@ export const partBody = joi.object({
     ram:        joi.string().min(1).required(),
     video_card: joi.string().min(1).required(),
     size:       joi.string().min(1).required()
+}).options({
+    abortEarly:false
 })

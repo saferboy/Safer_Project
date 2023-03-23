@@ -18,7 +18,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
             })
         }
 
-        const image = req.file.filename
+        const image = req.file.path
 
         const option = await createPart(part, partSystem, image)
 
